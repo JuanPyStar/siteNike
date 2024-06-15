@@ -1,0 +1,269 @@
+/* Estilos base */
+body {
+    background: url('../imagenes/fondopagina.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nike Futura ND', 'Helvetica Now Text Medium', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    height: 70px;
+    font-family:'Nike Futura ND', 'Helvetica Now Text Medium', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    margin-top: 40px;
+}
+
+.incio > p {
+    margin: 7px;
+}
+
+nav a:hover {
+    background-color: #646665;
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    font-family: 'Nike Futura ND', 'Helvetica Now Text Medium', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+nav li {
+    display: inline-flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 150px;
+    background-color: rgb(0 0 0 / 87%);
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Añadido para incluir padding y border en el cálculo del tamaño */
+}
+
+.contenido {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 30px;
+}
+
+.secciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.item {
+    width: calc(20% - 20px); /* 20% para que haya 5 elementos en una fila */
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.item > .image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 120px;
+    margin: 20px;
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.item h2 {
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.item strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.boton-comprar {
+    background-color: rgba(255, 255, 255, 0.87);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(0 0 0 / 87%);
+    color: white;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    position: relative;
+    margin-top: 30px;
+}
+
+.boton-comprar:hover {
+    background-color: #646665;
+}
+
+p {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+}
+
+h5 {
+    font-family: "FuturaNike", var(--displayFont, "FuturaNike"), sans-serif;
+    color: black;
+    font-size: 50px;
+    margin: 15px;
+}
+
+.text_nosotros {
+    padding: 50px;
+}
+
+p5 {
+    font-family: "FuturaNike", var(--displayFont, "FuturaNike"), sans-serif;
+    color: black;
+    font-size: 20px;
+    margin: 150px;
+    line-height: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+p6 {
+    font-family: "FuturaNike", var(--displayFont, "FuturaNike"), sans-serif;
+    color: black;
+    font-size: 20px;
+    margin: 150px;
+    line-height: 30px;
+    padding: 20px;
+}
+
+p7 {
+    font-family: "FuturaNike", var(--displayFont, "FuturaNike"), sans-serif;
+    color: black;
+    font-size: 20px;
+    margin: 150px;
+    line-height: 40px;
+    padding: 20px;
+}
+
+.nosotros img {
+    width: 550px;
+    height: 500px;
+}
+
+.nosotros2 {
+    padding: 0;
+    margin: 0;
+}
+
+.contacto img {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.contacto a {
+    text-decoration: none;
+    color: black;
+}
+
+.contacto a:hover {
+    color: #7e7e7e;
+}
+
+.ciudad-links ul li a {
+    text-decoration: none;
+    display: block;
+    transition: all .3s ease;
+}
+
+.ciudad-links p7:hover {
+    color: #7e7e7e;
+    padding-left: 6px;
+}
+
+#paypal-button-container {
+    text-align: center;
+    margin-top: 40px;
+    width: 300px;
+    margin: 20px auto;
+}
+
+.img-pagos {
+    align-items: center;
+    margin: 50px;
+    margin-bottom: 0px;
+}
+
+/* Función para hacer estilos consistentes en todos los dispositivos */
+@media (max-width: 768px) {
+    body,
+    h1,
+    .contenido,
+    .secciones,
+    .item,
+    .boton-comprar,
+    p,
+    h5,
+    .text_nosotros,
+    p5,
+    p6,
+    p7,
+    .nosotros,
+    .nosotros img,
+    .contacto,
+    .contacto img,
+    .ciudad-links ul li a,
+    .ciudad-links p7:hover,
+    #paypal-button-container,
+    .img-pagos {
+        font-size: 16px; /* Ajusta el tamaño de fuente base para dispositivos móviles */
+        margin: 0; /* Elimina cualquier margen adicional */
+        padding: 10px; /* Añade padding para mejorar la legibilidad */
+    }
+
+    h1 {
+        font-size: 40px; /* Ajusta el tamaño de fuente del encabezado h1 */
+        margin-top: 20px; /* Ajusta el margen superior del encabezado h1 */
+        height: 50px; /* Ajusta la altura del encabezado h1 */
+    }
+
+    .item {
+        width: calc(50% - 20px); /* Ajusta el ancho de los elementos en dispositivos móviles */
+    }
+
+    .nosotros img {
+        width: 100%; /* Ajusta el ancho de la imagen dentro de la sección nosotros */
+        height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    }
+
+    .boton-comprar {
+        font-size: 14px; /* Ajusta el tamaño de fuente del botón en dispositivos móviles */
+        padding: 8px 16px; /* Ajusta el padding del botón para dispositivos móviles */
+        margin-top: 20px; /* Ajusta el margen superior del botón en dispositivos móviles */
+    }
+}

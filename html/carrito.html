@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="icon" href="../imagenes/icons8-air-jordan-50.ico">
+    <title>Carrito</title>
+</head>
+<body>
+    <center><div>
+        <h1><img src="../imagenes/logo_nike.png"
+        style="height: 80px; height: 80px; position: absolute;margin-left: -400px;">Nike shop online</h1></div></center> 
+    <nav>
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../html/tenis.html">Tenis</a></li>
+            <li><a href="../html/camisetas.html">Camisetas</a></li>
+            <li><a href="../html/carrito.html">Carrito</a></li>
+        </ul>
+    </nav>
+    <div class="contenido">
+        <h2>Carrito de Compras</h2>
+        <div id="carrito" class="carrito"></div>
+        <div class="botones">
+            <button id="comprar-btn" class="boton-compra" onclick="procesarPago()">Comprar</button>
+            <button id="cancelar-btn" class="boton-cancelar" onclick="cancelarCompra()">Cancelar compra</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Compañia</h4>
+                    <ul>
+                        <li><a href="../html/nosotros.html">Nosotros</a></li>
+                        <li><a href="../html/politica_privacidad.html">Política de privacidad</a></li>
+                        <li><a href="../html/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="../html/carrito.html">Compras</a></li>
+                        <li><a href="../html/envios.html">Puntos de venta</a></li>
+                        <li><a href="../html/pagos.html">Pagos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="../html/camisetas.html">Camisetas</a></li>
+                        <li><a href="../html/tenis.html">Tenis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Síguenos</h4>
+                    <div class="social-link">
+                        <a href="https://www.facebook.com/nike"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nike/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/Nike"><i class="fab fa-x"></i></a>
+                        <a href="https://www.youtube.com/user/nike"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/nike"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="copyright"><p>&#169 Nike shop online</p></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/carrito.js"></script>
+    <script>
+        // Función para procesar el pago
+        function procesarPago() {
+            // Obtener el precio total del carrito del localStorage
+            var carrito = JSON.parse(localStorage.getItem('carrito'));
+
+            // Verificar si el carrito está vacío
+            if (!carrito || carrito.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+
+            // Calcular el precio total del carrito
+            var precioTotal = 0;
+            carrito.forEach(function(item) {
+                precioTotal += item.precio * item.cantidad;
+            });
+
+            // Redirigir a la página de pagos con el precio total
+            window.location.href = '../html/comprar.html?total=' + precioTotal;
+        }
+
+        // Función para cancelar la compra y reiniciar el carrito
+        function cancelarCompra() {
+            // Eliminar el carrito del localStorage
+            localStorage.removeItem('carrito');
+            // Redireccionar a la página del carrito
+            window.location.href = '../html/carrito.html';
+        }
+    </script>
+</body>
+</html>

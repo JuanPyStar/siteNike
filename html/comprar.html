@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="icon" href="../imagenes/icons8-air-jordan-50.ico">
+    <title>Pagar</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcBb42OkgBe-vbOFN5ipske6URdyLBHUVssvgJkarKtZ_-B7q6YStZ6uK5K9EBJSxOCxse8cnXI5AlXv&currency=EUR"></script>
+
+</head>
+<body>
+    <center>
+        <div>
+            <h1><img src="../imagenes/logo_nike.png" style="height: 80px; height: 80px; position: absolute;margin-left: -400px;">Nike shop online</h1>
+        </div>
+    </center> 
+    <nav>
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../html/tenis.html">Tenis</a></li>
+            <li><a href="../html/camisetas.html">Camisetas</a></li>
+            <li><a id="carrito-link" href="../html/carrito.html"> Carrito</a></li>
+        </ul>
+    </nav>
+    <div id="paypal-button-container"></div>
+    <div id="carrito-total" style="display: none;">Total a pagar: €0,00</div> <!-- Elemento para mostrar el monto total -->
+    <script>
+        // Función para obtener el monto total del carrito
+        function obtenerMontoTotal() {
+            // Obtener el carrito almacenado en localStorage
+            var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            // Variable para almacenar el precio total
+            var precioTotal = 0;
+
+            // Iterar sobre los productos en el carrito
+            carrito.forEach(function(producto) {
+                // Calcular el precio total sumando el precio de cada producto
+                precioTotal += parseFloat(producto.precio.replace(/[^\d.-]/g, ''));
+            });
+
+            // Devolver el precio total en formato de texto con dos decimales
+            return precioTotal.toFixed(2);
+        }
+
+        paypal.Buttons({
+            style:{
+                color:"blue",
+                shape:"pill",
+                label:"pay"
+            },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: obtenerMontoTotal(), //función para obtener el monto total del carrito
+                            currency_code: "EUR"
+                        }
+                    }]
+                });
+            },
+            onCancel: function(data){
+                alert("Pago cancelado");            //Alerta al cancelar pago
+                console.log(data);
+            },
+            onApprove: function(data, actions) {
+                var total = document.getElementById('carrito-total').innerText;
+                alert("Pago completado por: " + total);
+                document.getElementById('carrito-total').style.display = 'block'; // Mostrar el total a pagar cuando se aprueba el pago
+                return actions.order.capture().then(function(details) {
+                    window.location.href="../html/comprar.html"
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Compañia</h4>
+                    <ul>
+                        <li><a href="../html/nosotros.html">Nosotros</a></li>
+                        <li><a href="../html/politica_privacidad.html">Política de privacidad</a></li>
+                        <li><a href="../html/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="../html/carrito.html">Compras</a></li>
+                        <li><a href="../html/envios.html">Puntos de venta</a></li>
+                        <li><a href="../html/pagos.html">Pagos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="../html/camisetas.html">Camisetas</a></li>
+                        <li><a href="../html/tenis.html">Tenis</a></li>
+                </div>
+                <div class="footer-links">
+                    <h4>Síguenos</h4>
+                    <div class="social-link">
+                        <a href="https://www.facebook.com/nike"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nike/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/Nike"><i class="fab fa-x"></i></a>
+                        <a href="https://www.youtube.com/user/nike"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/nike"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="copyright"><p>&#169 Nike shop online</p></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
